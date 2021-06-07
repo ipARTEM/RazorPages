@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RazorPages.Models
 {
-    public class Employees
+    public class Employee
     {
         public int Id { get; set; }
 

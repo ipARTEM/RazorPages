@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorPages002", "RazorPages
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorPages.Models", "RazorPages.Models\RazorPages.Models.csproj", "{0BA51C5C-3B03-43F6-A6D9-44BF5CAB4CA9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorPages.Services", "RazorPages.Services\RazorPages.Services.csproj", "{729D9412-6A33-486F-BA31-8AC0C40F3D0D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0BA51C5C-3B03-43F6-A6D9-44BF5CAB4CA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BA51C5C-3B03-43F6-A6D9-44BF5CAB4CA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BA51C5C-3B03-43F6-A6D9-44BF5CAB4CA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{729D9412-6A33-486F-BA31-8AC0C40F3D0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{729D9412-6A33-486F-BA31-8AC0C40F3D0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{729D9412-6A33-486F-BA31-8AC0C40F3D0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{729D9412-6A33-486F-BA31-8AC0C40F3D0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
