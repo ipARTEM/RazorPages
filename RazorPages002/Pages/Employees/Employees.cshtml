@@ -4,6 +4,15 @@
     ViewData["Title"] = "Employees";
 }
 
+@if (TempData["SeccessMessage"] !=null)
+{
+    <div class="alert alert-success text-center">
+        @TempData["SeccessMessage"]
+
+    </div> 
+
+}
+
 <h1>Employees</h1>
 
 <h3>Employees count: @Model.Employees.Count()</h3>

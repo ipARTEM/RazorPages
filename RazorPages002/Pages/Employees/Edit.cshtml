@@ -1,4 +1,4 @@
-﻿@page "{id}:min(1):max(10)"
+﻿@page "{id}:min(1):max(10)/{handler?}"
 @model RazorPages002.Pages.Employees.EditModel
 @{
 
@@ -7,8 +7,37 @@
     var photoPath = $"/images/{Model.Employee.PhotoPath ?? "noimage.png"}";
 }
 
+<form method="post" asp-page-handler="UpdateNotificationPrefirences">
+    <div class="row text-center notifyBlock">
+        <div class="col form-check">
+            <h1>Notification Preference</h1>
+            <input asp-for="Notify" class="form-check-input" />
+            <label asp-for="Notify" class="form-check-label">
+                Receive email notification when my details change
+
+            </label><br />
+
+            <button type="submit" class="btn btn-primary text-center">Update Notification Preference</button> 
+
+            @if (!string.IsNullOrWhiteSpace(Model.Message))
+            {
+                <div class="alert alert-success" >
+                    <p class="p-3 mt-2">@Model.Message</p>
+
+                </div>
+
+            }
+
+        </div>
+
+    </div>
+
+</form>
+
+<hr />
+
 <!--Создаём форму редактирования-->
-<form method="post" class="mt-3" enctype="multipart/form-data">
+<form method="post" asp-page-handler="OnPost" class="mt-3" enctype="multipart/form-data">
     <!--Создаём скрытое поле для параметра ID-->
     <input type="hidden" asp-for="Employee.Id" />
     <input type="hidden" asp-for="Employee.PhotoPath" />
