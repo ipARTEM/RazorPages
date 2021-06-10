@@ -13,6 +13,8 @@ namespace RazorPages.Services
 
         Employee Update(Employee updateEmployee);
 
+        Employee Add(Employee newEmployee);
+
 
     }
 }
