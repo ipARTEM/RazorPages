@@ -34,12 +34,17 @@ namespace RazorPages002.Pages.Employees
 
         public string Message { get; set; }
 
-        public IActionResult OnGet(int id)
+        public IActionResult OnGet(int? id)
         {
-            
 
+
+            if (id.HasValue)
+            {
+                Employee = _employeeRepository.GetEmployee(id.Value);
+            }
+            else
+                Employee = new Employee();
             
-            Employee = _employeeRepository.GetEmployee(id);
 
             if (Employee==null)
             {
@@ -69,9 +74,22 @@ namespace RazorPages002.Pages.Employees
 
                 }
 
-                Employee = _employeeRepository.Update(Employee);
+                if (Employee.Id>0)
+                {
+                    Employee = _employeeRepository.Update(Employee);
 
-                TempData["SeccessMessage"] = $"Update{Employee.Name} successful!";
+                    TempData["SeccessMessage"] = $"Update{Employee.Name} successful!";
+
+                }
+                else
+                {
+                    Employee = _employeeRepository.Add(Employee);
+
+                    TempData["SeccessMessage"] = $"Adding{Employee.Name} successful!";
+
+                }
+
+                
 
                 return RedirectToPage("Employees");
             }
