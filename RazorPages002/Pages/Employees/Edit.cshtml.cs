@@ -36,23 +36,17 @@ namespace RazorPages002.Pages.Employees
 
         public IActionResult OnGet(int? id)
         {
-
-
             if (id.HasValue)
             {
                 Employee = _employeeRepository.GetEmployee(id.Value);
             }
             else
                 Employee = new Employee();
-            
 
             if (Employee==null)
             {
                 return RedirectToPage("/NotFound");
             }
-            
-
-            
             return Page();
         }
 
@@ -67,11 +61,9 @@ namespace RazorPages002.Pages.Employees
                     {
                         string filePath = Path.Combine(_webHostEnviroonment.WebRootPath, "images", Employee.PhotoPath);
                         System.IO.File.Delete(filePath);
-
                     }
 
                     Employee.PhotoPath = ProcessUploadedFile();
-
                 }
 
                 if (Employee.Id>0)
@@ -86,11 +78,7 @@ namespace RazorPages002.Pages.Employees
                     Employee = _employeeRepository.Add(Employee);
 
                     TempData["SeccessMessage"] = $"Adding{Employee.Name} successful!";
-
                 }
-
-                
-
                 return RedirectToPage("Employees");
             }
             return Page();
@@ -101,7 +89,6 @@ namespace RazorPages002.Pages.Employees
             if (Notify)
             {
                 Message = "Thank you for turning on notifications";
-
             }
             else
             {
@@ -109,7 +96,6 @@ namespace RazorPages002.Pages.Employees
             }
 
             Employee = _employeeRepository.GetEmployee(id);
-
         }
 
         private string ProcessUploadedFile()
@@ -126,7 +112,6 @@ namespace RazorPages002.Pages.Employees
                 using (var fs=new FileStream(filePath, FileMode.Create))
                 {
                     Photo.CopyTo(fs);
-
                 }
 
             }
