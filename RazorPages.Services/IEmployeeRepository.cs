@@ -17,6 +17,8 @@ namespace RazorPages.Services
 
         Employee Delete(int id);
 
+        IEnumerable<DeptHeadCount> EmployeeCountByDept();
+
 
     }
 }

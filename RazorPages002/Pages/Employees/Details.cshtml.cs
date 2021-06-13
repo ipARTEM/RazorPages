@@ -19,7 +19,7 @@ namespace RazorPages002.Pages.Employees
 
         }
 
-        public Employee Employee { get; private set; }
+        public Employee Employee { get;  set; }
 
         public IActionResult OnGet(int id)
         {
