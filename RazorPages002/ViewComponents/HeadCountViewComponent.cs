@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RazorPages.Models;
 using RazorPages.Services;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,9 @@ namespace RazorPages002.ViewComponents
             _employeeRepository = employeeRepository;
         }
 
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke(Dept? department=null)
         {
-            var result = _employeeRepository.EmployeeCountByDept();
+            var result = _employeeRepository.EmployeeCountByDept(department);
             return View(result);
 
 
