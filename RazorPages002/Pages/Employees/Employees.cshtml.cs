@@ -20,9 +20,12 @@ namespace RazorPages002.Pages.Employees
 
         public IEnumerable<Employee> Employees { get; set; }
 
+        [BindProperty(SupportsGet =true)]   // для методов пост   (SupportsGet =true)- для гет
+        public string SearchTerm { get; set; }
+
         public void OnGet()
         {
-            Employees = _db.GetAllEmployees();
+            Employees = _db.Search(SearchTerm);
         }
     }
 }

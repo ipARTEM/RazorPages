@@ -12,7 +12,7 @@ namespace RazorPages.Services
 
         public MockEmployeeRepositury()
         {
-            _employeeList = new List<Employee>                                                        
+            _employeeList = new List<Employee>
             {
                 new Employee()
                 {
@@ -55,7 +55,7 @@ namespace RazorPages.Services
         {
             Employee employeeToDelete = _employeeList.FirstOrDefault(x => x.Id == id);
 
-            if (employeeToDelete!=null)
+            if (employeeToDelete != null)
             {
                 _employeeList.Remove(employeeToDelete);
 
@@ -71,11 +71,11 @@ namespace RazorPages.Services
                 query = query.Where(x => x.Department == dept.Value);
 
 
-            return query.GroupBy(x => x.Department )
+            return query.GroupBy(x => x.Department)
                 .Select(x => new DeptHeadCount()
                 {
-                    Department=x.Key.Value,
-                     Count=x.Count()
+                    Department = x.Key.Value,
+                    Count = x.Count()
                 }).ToList();
         }
 
@@ -86,7 +86,15 @@ namespace RazorPages.Services
 
         public Employee GetEmployee(int id)
         {
-            return _employeeList.FirstOrDefault(x=>x.Id==id);
+            return _employeeList.FirstOrDefault(x => x.Id == id);
+        }
+
+        public IEnumerable<Employee> Search(string searchTerm)
+        {
+            if (string.IsNullOrWhiteSpace(searchTerm))
+                return _employeeList;
+
+            return _employeeList.Where(x => x.Name.ToLower().Contains(searchTerm.ToLower()) || x.Email.ToLower().Contains(searchTerm.ToLower()));
         }
 
         public Employee Update(Employee updateEmployee)
