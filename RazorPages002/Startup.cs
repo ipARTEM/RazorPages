@@ -31,7 +31,9 @@ namespace RazorPages002
                 options.UseSqlServer(Configuration.GetConnectionString("EmployeeDBConnection"));
             });
 
-            services.AddSingleton<IEmployeeRepository, MockEmployeeRepositury>();
+            //services.AddSingleton<IEmployeeRepository, MockEmployeeRepositury>();
+
+            services.AddScoped<IEmployeeRepository, SQLEmployeeRepository>();
             services.AddRazorPages();
 
             services.Configure<RouteOptions>(options =>

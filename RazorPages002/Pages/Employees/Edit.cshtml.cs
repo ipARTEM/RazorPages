@@ -1,14 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using RazorPages.Models;
 using RazorPages.Services;
+using System;
+using System.IO;
 
 namespace RazorPages002.Pages.Employees
 {
@@ -36,6 +33,8 @@ namespace RazorPages002.Pages.Employees
 
         public IActionResult OnGet(int? id)
         {
+            
+
             if (id.HasValue)
             {
                 Employee = _employeeRepository.GetEmployee(id.Value);
@@ -60,7 +59,9 @@ namespace RazorPages002.Pages.Employees
                     if (Employee.PhotoPath != null)
                     {
                         string filePath = Path.Combine(_webHostEnviroonment.WebRootPath, "images", Employee.PhotoPath);
-                        System.IO.File.Delete(filePath);
+
+                        if (Employee.PhotoPath != "noimage.png")
+                            System.IO.File.Delete(filePath);
                     }
 
                     Employee.PhotoPath = ProcessUploadedFile();
